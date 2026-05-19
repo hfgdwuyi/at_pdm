@@ -31,6 +31,11 @@
 # Debug logs
 JLinkLog.txt
 
+# --- CMake / GCC outputs ---
+build/
+*.elf
+compile_commands.json
+
 # --- OS / IDE ---
 Thumbs.db
 .DS_Store

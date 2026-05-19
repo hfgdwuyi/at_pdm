@@ -390,69 +390,79 @@
               <FilePath>..\Src\stm32f4xx_it.c</FilePath>
             </File>
             <File>
-              <FileName>App_CAN.c</FileName>
+              <FileName>app_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\App_CAN.c</FilePath>
+              <FilePath>..\Src\app_can.c</FilePath>
             </File>
             <File>
-              <FileName>App_GPIO.c</FileName>
+              <FileName>app_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\App_GPIO.c</FilePath>
+              <FilePath>..\Src\app_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>App_UART.c</FileName>
+              <FileName>app_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\App_UART.c</FilePath>
+              <FilePath>..\Src\app_uart.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_can.c</FileName>
+              <FileName>driver_can.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\Driver_can.c</FilePath>
+              <FilePath>..\Src\driver_can.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_gpio.c</FileName>
+              <FileName>driver_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\Driver_gpio.c</FilePath>
+              <FilePath>..\Src\driver_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_timer.c</FileName>
+              <FileName>driver_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\Driver_timer.c</FilePath>
+              <FilePath>..\Src\driver_timer.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_uart.c</FileName>
+              <FileName>driver_uart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\Driver_uart.c</FilePath>
+              <FilePath>..\Src\driver_uart.c</FilePath>
             </File>
             <File>
-              <FileName>Driver_wdog.c</FileName>
+              <FileName>driver_wdog.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\Driver_wdog.c</FilePath>
+              <FilePath>..\Src\driver_wdog.c</FilePath>
             </File>
             <File>
-              <FileName>PDS_PeripheralKSZ8081.c</FileName>
+              <FileName>pds_peripheral_ksz8081.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\PDS_PeripheralKSZ8081.c</FilePath>
+              <FilePath>..\Src\pds_peripheral_ksz8081.c</FilePath>
             </File>
             <File>
-              <FileName>PDS_SocETHERNET.c</FileName>
+              <FileName>pds_soc_ethernet.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\PDS_SocETHERNET.c</FilePath>
+              <FilePath>..\Src\pds_soc_ethernet.c</FilePath>
             </File>
             <File>
-              <FileName>PDS_SocTICK.c</FileName>
+              <FileName>pds_soc_tick.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\PDS_SocTICK.c</FilePath>
+              <FilePath>..\Src\pds_soc_tick.c</FilePath>
             </File>
             <File>
-              <FileName>PDS_SocETHERNET_IRQ.c</FileName>
+              <FileName>pds_soc_ethernet_irq.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\PDS_SocETHERNET_IRQ.c</FilePath>
+              <FilePath>..\Src\pds_soc_ethernet_irq.c</FilePath>
             </File>
             <File>
-              <FileName>App_FMC.c</FileName>
+              <FileName>app_fmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\App_FMC.c</FilePath>
+              <FilePath>..\Src\app_fmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>scheduler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\scheduler.c</FilePath>
+            </File>
+            <File>
+              <FileName>system_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\system_clock.c</FilePath>
             </File>
           </Files>
         </Group>
