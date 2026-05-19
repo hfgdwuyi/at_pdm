@@ -7,6 +7,7 @@
 **/
 
 #include "main.h"
+#include "app_adc.h"
 
 FilterADCValueTypeDef FilterADCValue;
 

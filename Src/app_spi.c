@@ -7,6 +7,7 @@
 **/
 
 #include "main.h"
+#include "app_spi.h"
 
 #define MAX146_ADC_CHANNEL_IAC11  0x80
 #define MAX146_ADC_CHANNEL_IAC12  0xc0

@@ -7,6 +7,7 @@
 **/
 
 #include "main.h"
+#include "app_uart.h"
 
 static uint8_t TxMessage[8];
 static uint8_t *p = TxMessage;

@@ -1,10 +1,26 @@
 # Toolchain file: arm-none-eabi-gcc
 # Usage: cmake -B build -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake
+#
+# Requires the ARM GNU Toolchain (includes newlib-nano):
+#   https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
 
 set(CMAKE_SYSTEM_NAME      Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(TOOLCHAIN_PREFIX arm-none-eabi-)
+# Point to ARM GNU Toolchain. Adjust this path if you installed elsewhere.
+set(TOOLCHAIN_DIR $ENV{HOME}/tools/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi)
+if(NOT EXISTS "${TOOLCHAIN_DIR}")
+  # Fallback: try Homebrew prefix (may not include newlib)
+  execute_process(COMMAND brew --prefix arm-none-eabi-gcc
+                  OUTPUT_VARIABLE BREW_PREFIX
+                  OUTPUT_STRIP_TRAILING_WHITESPACE
+                  ERROR_QUIET)
+  if(BREW_PREFIX)
+    set(TOOLCHAIN_DIR ${BREW_PREFIX})
+  endif()
+endif()
+
+set(TOOLCHAIN_PREFIX ${TOOLCHAIN_DIR}/bin/arm-none-eabi-)
 
 set(CMAKE_C_COMPILER    ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_CXX_COMPILER  ${TOOLCHAIN_PREFIX}g++)
@@ -12,6 +28,8 @@ set(CMAKE_ASM_COMPILER  ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_LINKER        ${TOOLCHAIN_PREFIX}gcc)
 set(CMAKE_OBJCOPY       ${TOOLCHAIN_PREFIX}objcopy)
 set(CMAKE_SIZE          ${TOOLCHAIN_PREFIX}size)
+set(CMAKE_AR            ${TOOLCHAIN_PREFIX}gcc-ar)
+set(CMAKE_RANLIB        ${TOOLCHAIN_PREFIX}gcc-ranlib)
 
 set(CMAKE_EXECUTABLE_SUFFIX_ASM ".elf")
 set(CMAKE_EXECUTABLE_SUFFIX_C   ".elf")
@@ -19,9 +37,13 @@ set(CMAKE_EXECUTABLE_SUFFIX_CXX ".elf")
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
-set(COMMON_FLAGS "-mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin -fshort-enums")
+set(CPU_FLAGS "-mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -mthumb-interwork -ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin -fshort-enums")
+set(NEWLIB_INC "${TOOLCHAIN_DIR}/arm-none-eabi/include")
 
-set(CMAKE_C_FLAGS_INIT       "${COMMON_FLAGS} -std=gnu11")
-set(CMAKE_CXX_FLAGS_INIT     "${COMMON_FLAGS} -std=gnu++17")
-set(CMAKE_ASM_FLAGS_INIT     "${COMMON_FLAGS}")
-set(CMAKE_EXE_LINKER_FLAGS_INIT "-mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -mthumb-interwork --specs=nosys.specs --specs=nano.specs -Wl,--gc-sections -Wl,--print-memory-usage")
+# Compile: -isystem gives the preprocessor access to newlib headers (stdint.h etc.)
+# Link:   --specs=nano.specs only in linker flags avoids the duplication that
+#         occurs when both CFLAGS and ASMFLAGS carry specs to the link step.
+set(CMAKE_C_FLAGS_INIT       "${CPU_FLAGS} -std=gnu11 -isystem ${NEWLIB_INC}")
+set(CMAKE_CXX_FLAGS_INIT     "${CPU_FLAGS} -std=gnu++17 -isystem ${NEWLIB_INC}")
+set(CMAKE_ASM_FLAGS_INIT     "${CPU_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS_INIT "${CPU_FLAGS} --specs=nano.specs -Wl,--gc-sections -Wl,--print-memory-usage")

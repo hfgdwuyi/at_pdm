@@ -7,6 +7,7 @@
 **/
 
 #include "main.h"
+#include "app_i2c.h"
 
 #define I2C_ADDRESS_WRITE  0xA0
 #define I2C_ADDRESS_READ   0xA1

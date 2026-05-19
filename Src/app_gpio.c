@@ -7,6 +7,7 @@
 **/
 
 #include "main.h"
+#include "app_gpio.h"
 
 GPIO_FilterTypeDef          GPIO_FilterCount;
 ControlBoardStatusTypeDef   ControlBoardStatus;

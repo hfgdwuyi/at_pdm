@@ -4,12 +4,12 @@ static void mem_mgmt_init(U8_t memx);
 static U16_t mem_mgmt_perused(U8_t memx);
 
 /* Memory Pool alignment=32 byte */
-__align(32) U8_t inte_gen_mem_base[GEN_MEM_MAX_SIZE];                                   /* Interal general memory pool */
-__align(32) U8_t inte_ccm_mem_base[CCM_MEM_MAX_SIZE] __attribute__((at(0x10000000)));	/* Interal ccm memory pool */
+__attribute__((aligned(32))) U8_t inte_gen_mem_base[GEN_MEM_MAX_SIZE];                                   /* Interal general memory pool */
+__attribute__((aligned(32), section(".ccm"))) U8_t inte_ccm_mem_base[CCM_MEM_MAX_SIZE];  /* Interal ccm memory pool */
 
 /* Memory management table */
-U32_t inte_gen_mem_map_base[GEN_MEM_TABLE_SIZE];                                                    /* Interal general memory pool table */
-U32_t inte_ccm_mem_map_base[CCM_MEM_TABLE_SIZE] __attribute__((at(0x10000000+CCM_MEM_MAX_SIZE)));	/* Interal ccm memory pool table */
+U32_t inte_gen_mem_map_base[GEN_MEM_TABLE_SIZE];                                            /* Interal general memory pool table */
+__attribute__((section(".ccm"))) U32_t inte_ccm_mem_map_base[CCM_MEM_TABLE_SIZE];           /* Interal ccm memory pool table */
 
 /* Memory management parameter */
 const U32_t mem_table_size[MEMORY_BANK_NUM] = {GEN_MEM_TABLE_SIZE,CCM_MEM_TABLE_SIZE};      /* Memory table size */

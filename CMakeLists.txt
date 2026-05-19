@@ -37,6 +37,7 @@ set(INC_DIRS
   ${CMAKE_CURRENT_SOURCE_DIR}/Inc
   ${CMAKE_CURRENT_SOURCE_DIR}/core
   ${CMAKE_CURRENT_SOURCE_DIR}/module
+  ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/CMSIS/Include
   ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32F4xx/Include
   ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/STM32F4xx_HAL_Driver/Inc
   ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/BSP/STM324x9I_EVAL
@@ -59,6 +60,8 @@ set(INC_DIRS
 file(GLOB HAL_SOURCES
   Drivers/STM32F4xx_HAL_Driver/Src/*.c
 )
+# Exclude template files (not meant to be compiled directly)
+list(FILTER HAL_SOURCES EXCLUDE REGEX ".*_template\\.c$")
 
 add_library(hal STATIC ${HAL_SOURCES})
 target_include_directories(hal PUBLIC ${INC_DIRS})
@@ -68,7 +71,7 @@ target_compile_definitions(hal PRIVATE USE_HAL_DRIVER STM32F429xx)
 # lwIP  (static library)
 # =============================================================================
 
-file(GLOB_RECURSE LWIP_SOURCES
+file(GLOB LWIP_SOURCES
   lwip/lwip-1.4.1/src/core/*.c
   lwip/lwip-1.4.1/src/core/ipv4/*.c
   lwip/lwip-1.4.1/src/core/snmp/*.c
@@ -82,6 +85,10 @@ file(GLOB_RECURSE LWIP_SOURCES
   lwip/lwip_app/udp_demo/*.c
   lwip/lwip_app/web_server_demo/*.c
 )
+# Exclude demo files that require missing BSP headers (delay.h, usart.h, led.h)
+list(FILTER LWIP_SOURCES EXCLUDE REGEX ".*_demo/.*")
+# Exclude IPv6 (only IPv4 is used in this project)
+list(FILTER LWIP_SOURCES EXCLUDE REGEX ".*/ipv6/.*")
 
 add_library(lwip STATIC ${LWIP_SOURCES})
 target_include_directories(lwip PUBLIC ${INC_DIRS})

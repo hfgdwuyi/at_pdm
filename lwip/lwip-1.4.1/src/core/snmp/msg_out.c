@@ -327,7 +327,7 @@ snmp_send_trap(s8_t generic_trap, struct snmp_obj_id *eoid, s32_t specific_trap)
         else
         {
           vb->ident = NULL;
-          vb->ident_len = NULL;
+          vb->ident_len = 0;
 
           vb->value_len = 44;
           vb->value_type = SNMP_ASN1_UNIV | SNMP_ASN1_PRIMIT | SNMP_ASN1_OBJ_ID;

@@ -1,37 +1,17 @@
-/**
-  ******************************************************************************
-  * @file    CAN/CAN_Networking/Inc/main.h
-  * @author  MCD Application Team
-  * @brief   Header for main.c module
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
-  *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
-  *
-  ******************************************************************************
-  */
-
-/* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __APP_ADC_H
 #define __APP_ADC_H
 
-/* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
-/* Exported types ------------------------------------------------------------*/
+#include "stm32f4xx_hal.h"
 
-/* Exported constants --------------------------------------------------------*/
+typedef struct {
+  uint16_t u16I24V;
+  uint16_t u16Power24V;
+} FilterADCValueTypeDef;
 
+extern FilterADCValueTypeDef FilterADCValue;
+extern ADC_HandleTypeDef AdcHandle;
 
-/* Exported functions --------------------------------------------------------*/
-uint32_t ReadAdc(uint32_t u32Channel);
-extern void App_ADC(void);
+void App_ADC(void);
 
 #endif /* __APP_ADC_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
