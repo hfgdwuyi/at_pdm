@@ -1,5 +1,5 @@
 #include "data_type.h"
-#include "PDS_SocTICK.h"
+#include "pds_soc_tick.h"
 
 
 void PDS_soc_tick_delay_ms(U16_t n_ms)

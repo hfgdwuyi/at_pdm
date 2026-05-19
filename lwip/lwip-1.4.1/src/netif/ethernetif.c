@@ -1,5 +1,5 @@
 #include "netif/ethernetif.h" 
-#include "PDS_SocETHERNET.h"  
+#include "pds_soc_ethernet.h"  
 #include "lwip_comm.h" 
 #include "netif/etharp.h"  
 #include "string.h"  	   

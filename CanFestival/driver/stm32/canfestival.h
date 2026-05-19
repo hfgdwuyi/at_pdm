@@ -27,7 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #include "applicfg.h"
 #include "data.h"
-#include "APP_CAN.h"
+#include "app_can.h"
 //#include "sys.h"
 
 // ---------  to be called by user app ---------

@@ -9,8 +9,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "data_type.h"
-#include "PDS_SocETHERNET.h"
-#include "PDS_PeripheralKSZ8081.h"
+#include "pds_soc_ethernet.h"
+#include "pds_peripheral_ksz8081.h"
 #include "stm32f4x7_eth.h"
 #include "stdio.h"
 #include "GM_Malloc.h" 

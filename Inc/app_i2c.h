@@ -31,6 +31,6 @@ extern I2C_HandleTypeDef I2cHandle;
 /* Exported functions --------------------------------------------------------*/
 extern void App_I2C(void);
 
-#endif /* __APP_CAN_H */
+#endif /* __APP_I2C_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

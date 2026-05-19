@@ -9,8 +9,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "data_type.h"
-#include "PDS_PeripheralKSZ8081.h"
-#include "PDS_SocTICK.h" 
+#include "pds_peripheral_ksz8081.h"
+#include "pds_soc_tick.h" 
 
 
 BOOL_t PDS_peripheral_ksz8081_init(void)

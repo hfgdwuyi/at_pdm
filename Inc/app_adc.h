@@ -18,19 +18,20 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __APP_UART_H
-#define __APP_UART_H
+#ifndef __APP_ADC_H
+#define __APP_ADC_H
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 /* Exported types ------------------------------------------------------------*/
+
 /* Exported constants --------------------------------------------------------*/
 
 
 /* Exported functions --------------------------------------------------------*/
-extern void App_UART(void);
-extern uint8_t RxMessage[8];
-extern uint8_t u8ReveiveValid;
-#endif /* __APP_CAN_H */
+uint32_t ReadAdc(uint32_t u32Channel);
+extern void App_ADC(void);
+
+#endif /* __APP_ADC_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

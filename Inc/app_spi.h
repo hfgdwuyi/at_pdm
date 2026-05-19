@@ -18,20 +18,18 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __APP_ADC_H
-#define __APP_ADC_H
+#ifndef __APP_SPI_H
+#define __APP_SPI_H
 
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 /* Exported types ------------------------------------------------------------*/
 
 /* Exported constants --------------------------------------------------------*/
-
-
+extern uint16_t u16ReceiveAdcValue[8];
 /* Exported functions --------------------------------------------------------*/
-uint32_t ReadAdc(uint32_t u32Channel);
-extern void App_ADC(void);
+extern void App_SPI(void);
 
-#endif /* __APP_CAN_H */
+#endif /* __APP_SPI_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
