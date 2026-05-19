@@ -1,0 +1,39 @@
+# --- Keil/ARMCC outputs ---
+*.o
+*.d
+*.crf
+*.dep
+*.axf
+*.map
+*.lst
+*.lnp
+*.htm
+*.build_log*
+*.bak
+*.tmp
+*.hex
+*.bin
+
+# Keil GUI/cache files
+*.uvguix.*
+*.uvgui.*
+*.uvlog
+
+# Keil folders
+**/Objects/**
+**/Listings/**
+**/RTE/**
+
+# Workspace-specific output dirs
+/obj/
+/Lib/
+
+# Debug logs
+JLinkLog.txt
+
+# --- OS / IDE ---
+Thumbs.db
+.DS_Store
+
+# VS Code logs only (keep configs by default)
+/.vscode/*.log
