@@ -36,6 +36,9 @@ build/
 *.elf
 compile_commands.json
 
+# --- Toolchain ---
+tools/arm-gnu-toolchain-*
+
 # --- OS / IDE ---
 Thumbs.db
 .DS_Store

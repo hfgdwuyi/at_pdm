@@ -7,18 +7,9 @@
 set(CMAKE_SYSTEM_NAME      Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-# Point to ARM GNU Toolchain. Adjust this path if you installed elsewhere.
-set(TOOLCHAIN_DIR $ENV{HOME}/tools/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi)
-if(NOT EXISTS "${TOOLCHAIN_DIR}")
-  # Fallback: try Homebrew prefix (may not include newlib)
-  execute_process(COMMAND brew --prefix arm-none-eabi-gcc
-                  OUTPUT_VARIABLE BREW_PREFIX
-                  OUTPUT_STRIP_TRAILING_WHITESPACE
-                  ERROR_QUIET)
-  if(BREW_PREFIX)
-    set(TOOLCHAIN_DIR ${BREW_PREFIX})
-  endif()
-endif()
+# Toolchain is stored locally under the project root for modularity.
+# CMAKE_CURRENT_LIST_DIR is the directory containing this file (cmake/).
+set(TOOLCHAIN_DIR ${CMAKE_CURRENT_LIST_DIR}/../tools/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi)
 
 set(TOOLCHAIN_PREFIX ${TOOLCHAIN_DIR}/bin/arm-none-eabi-)
 
